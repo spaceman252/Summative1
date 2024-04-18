@@ -18,16 +18,22 @@
 
 
 
-    <div class="converson_container"> 
+    <div class="conversion_container"> 
         <h2> Currency Converter </h2>
-        <div class="content"> 
-            <input type="number" placeholder="Enter Value" class="input_currency">
-            <select id="fromCurrency" class="currency-selector"></select>
-            <select id="toCurrency" class="currency-selector"></select>
-            <button onclick="convertCurrency()">Convert</button>
+        <input type="number" placeholder="Enter Value" class="input_currency"> </input>
+        <div class="controls">
+            <select id="fromCurrency" class="currency-selector1"></select>
+            <button class="swap-btn" >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                  </svg>
+                  
+            </button>
+            <select id="toCurrency" class="currency-selector2"></select>
         </div>
-        <div id="result" class="result"> result will appear here</div>
+        <div id="result" class="result">Result will appear here</div>
     </div>
+    
 
     <script src="app.js"> </script>
 

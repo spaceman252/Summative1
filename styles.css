@@ -26,43 +26,52 @@
    
 }
 
-
-.converson_container{
-    margin-top: 20px;
-    width: 300px;
-    height: 500px;
+.conversion_container {
     background-color: beige;
-    padding: 10px;
-    margin-block: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
 
-    border: 5px solid;
-
-    border-width: 1px;
-    border-color: black;
-    border-radius: 10px;
-    border-radius: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    }
-.content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-}
-.input_currency {
-        width: 100%; /* Full width of the container */
-        padding: 10px;
-        margin-bottom: 15px; /* Space between the input and the next element */
-        font-size: 1em; /* Sets a standard font size */
-        border: 1px solid #ccc; /* A light grey border */
-        border-radius: 7px; /* Slightly rounded borders for the input field */
-}
     
-.converson_container h2{
-    margin-top: 15px; /* Adjust this value as needed for your design */
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Adjust this as needed */
+    margin: 20px 0;
+}
+
+.input_currency {
+    margin-bottom: 10px;
+    width: 80%; /* Adjust width as needed */
+}
+
+.currency-selector1, .currency-selector2 {
+    flex: 1; 
+    /* Adjust flex growth as needed */
+}
+.swap-btn {
+    border: none;
+    background: none;
+    width: 55px;
+    height: 55px;
+    padding: 8px;
+    margin: 20px; 
+    cursor: pointer; 
+    align-items: center;
+
+}
+
+.result {
+    margin-top: 10px;
+    width: 80%; /* Adjust width as needed */
+    padding: 10px;
+    background-color: #f1f1f1; /* Background color for visibility */
     text-align: center;
-    font-size: 37px
 }
 
