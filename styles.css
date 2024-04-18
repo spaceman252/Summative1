@@ -1,3 +1,28 @@
-h1{
-    color:red
+.navbar ul{
+    list-style-type: none;
+    background-color: rgb(140, 213, 22);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    display: flex; /* Set the display to flex */
+    justify-content: space-evenly;
+    
+}
+
+.navbar a{
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-family: verdana;
+    font-size: 30px;
+}
+.navbar a:hover{
+    background-color: whitesmoke;
+}
+.navbar li{
+    float: left;
+   
+    
 }
