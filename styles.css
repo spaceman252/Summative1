@@ -4,6 +4,9 @@
     padding: 0px;
     margin: 0px;
     overflow: hidden;
+    display: flex; /* Set the display to flex */
+    justify-content: space-evenly;
+    
 }
 
 .navbar a{
@@ -13,11 +16,16 @@
     display: block;
     text-align: center;
     font-family: verdana;
-    font-size: 20px;
+    font-size: 30px;
 }
 .navbar a:hover{
     background-color: whitesmoke;
 }
 .navbar li{
     float: left;
+   
+    
+}
+
+
 }
