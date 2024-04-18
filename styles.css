@@ -1,32 +1,23 @@
-/* Basic reset for styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-nav {
-    background-color: #333;
-    font-family: Arial, sans-serif;
-}
-
-nav ul {
+.navbar ul{
     list-style-type: none;
-    text-align: center;
+    background-color: rgb(140, 213, 22);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
 }
 
-nav ul li {
-    display: inline-block;
-}
-
-nav ul li a {
-    display: block;
-    padding: 15px 20px;
+.navbar a{
+    color: black;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-family: verdana;
+    font-size: 20px;
 }
-
-nav ul li a:hover {
-    background-color: #555;
+.navbar a:hover{
+    background-color: whitesmoke;
+}
+.navbar li{
+    float: left;
 }
