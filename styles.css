@@ -24,5 +24,58 @@
 .navbar li{
     float: left;
    
+}
+
+.conversion_container {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+
     
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Adjust this as needed */
+    margin: 20px 0;
+}
+
+.input_currency {
+    margin-bottom: 10px;
+    width: 80%; /* Adjust width as needed */
+}
+
+.currency-selector1, .currency-selector2 {
+    flex: 1; 
+    /* Adjust flex growth as needed */
+}
+.swap-btn {
+    border: none;
+    background: none;
+    width: 55px;
+    height: 55px;
+    padding: 8px;
+    margin: 20px; 
+    cursor: pointer; 
+    align-items: center;
+
+}
+
+.result {
+    margin-top: 10px;
+    width: 80%; /* Adjust width as needed */
+    padding: 10px;
+    background-color: #f1f1f1; /* Background color for visibility */
+    text-align: center;
+    cursor: pointer;
+}
+
+.result:hover {
+    background-color: #45a049;\
 }
