@@ -11,7 +11,8 @@ async function get_codes() {
     try {
         response = await fetch(codesurl);
         if(!response.ok){
-            throw new Error('Failed')
+
+            throw new Error('Failed to fetch data from API.')
         }
     const data = await response.json();
     const codes = data.supported_codes;
@@ -39,7 +40,7 @@ async function get_codes() {
 }
 get_codes();
 
-async function swapCurrency() {
+function swapCurrency() {
 
     console.log("Swap function called");
     const toCurrency = document.getElementById('toCurrency');
@@ -64,13 +65,13 @@ async function convertCurrency() {
     const amount = document.querySelector('.input_currency').value;
     const resultDiv = document.getElementById('result');
 
-    // Check if the amount is a valid number
+    
     if (isNaN(amount) || amount <= 0) {
         resultDiv.textContent = 'Please enter a valid amount';
         return;
     }
 
-    // Construct the API URL
+    
     const apiUrl = "https://v6.exchangerate-api.com/v6/"+APIKEY+"/latest/"+fromCurrency; // Adjust 'to' as needed or make dynamic
 
     try {
@@ -80,12 +81,10 @@ async function convertCurrency() {
         }
         const data = await response.json();
         const rates = data.conversion_rates;
-        const rate = rates[toCurrency]; // Assuming the API returns an object with a 'rate' property
-
-        // Calculate the result
+        const rate = rates[toCurrency]; 
         const result = amount * rate;
 
-        // Update the result div
+       
         resultDiv.textContent = `Converted ${fromCurrency} to Amount: ${result.toFixed(2)}`;
     } catch (error) {
         console.error('Error:', error);
