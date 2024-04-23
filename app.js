@@ -82,12 +82,22 @@ async function convertCurrency() {
         const data = await response.json();
         const rates = data.conversion_rates;
         const rate = rates[toCurrency]; 
-        const result = amount * rate;
+        const result = conversion(amount, rate);
 
        
-        resultDiv.textContent = `Converted ${fromCurrency} to Amount: ${result.toFixed(2)}`;
+        resultDiv.textContent = `Converted ${fromCurrency} to Amount: ${result}`;
+
+
     } catch (error) {
         console.error('Error:', error);
         resultDiv.textContent = 'Error converting currency';
     }
 }
+
+function conversion(amount , rate){
+
+    return((amount * rate))
+
+}
+
+module.exports = { conversion }
