@@ -96,7 +96,7 @@ async function convertCurrency() {
 
 function conversion(amount , rate){
 
-    return((amount * rate))
+    return((amount * rate)).toFixed(2)
 
 }
 
