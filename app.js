@@ -2,10 +2,40 @@
 
 const APIKEY = "154de4bb83aec54d16a03320"
 
-//const APIKEY = "154de4bb83aec54d16a033"
+
 
 codesurl = "https://v6.exchangerate-api.com/v6/"+APIKEY+"/codes"
 
+
+const hardcodedRates = {
+    GBP: { EUR: 1.17, USD: 1.25 },
+    EUR: { GBP: 0.85, USD: 1.07 },
+    USD: { GBP: 0.80, EUR: 0.93 }
+};
+
+function use_hardcoded() {
+    const fromCurrencySelect = document.getElementById('fromCurrency');
+    const toCurrencySelect = document.getElementById('toCurrency');
+
+    // Clear existing options first if any
+    fromCurrencySelect.innerHTML = '';
+    toCurrencySelect.innerHTML = '';
+
+    // Iterate over hardcoded rates to populate the dropdowns
+    for (const [code, rates] of Object.entries(hardcodedRates)) {
+        // Create and append option for 'from' currency
+        const fromOption = document.createElement('option');
+        fromOption.value = code;
+        fromOption.text = code;
+        fromCurrencySelect.appendChild(fromOption);
+
+        // Create and append option for 'to' currency
+        const toOption = document.createElement('option');
+        toOption.value = code;
+        toOption.text = code;
+        toCurrencySelect.appendChild(toOption);
+    }
+}
 
 
 async function get_codes() {
