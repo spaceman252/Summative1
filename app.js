@@ -13,10 +13,14 @@ const hardcodedRates = {
     USD: { GBP: 0.80, EUR: 0.93 }
 };
 
-function use_hardcoded() {
+function use_hardcoded(){
     const fromCurrencySelect = document.getElementById('fromCurrency');
     const toCurrencySelect = document.getElementById('toCurrency');
-
+    
+    if (!fromCurrencySelect || !toCurrencySelect) {
+        console.error('Currency select elements not found!');
+        return; // Exit the function if elements are not found
+    }
     // Clear existing options first if any
     fromCurrencySelect.innerHTML = '';
     toCurrencySelect.innerHTML = '';
@@ -34,6 +38,7 @@ function use_hardcoded() {
         toOption.value = code;
         toOption.text = code;
         toCurrencySelect.appendChild(toOption);
+    
     }
 }
 
@@ -45,6 +50,7 @@ async function get_codes() {
         if(!response.ok){
 
             throw new Error('Failed to fetch data from API.')
+            
         }
     const data = await response.json();
     const codes = data.supported_codes;
@@ -68,9 +74,12 @@ async function get_codes() {
 }
     catch (error) {
         console.error('Error:', error);
-        use_hardcoded()
+        use_hardcoded();
+
+        
     }
 }
+
 get_codes();
 
 function swapCurrency() {
@@ -132,7 +141,7 @@ async function convertCurrency() {
         } else {
             resultDiv.textContent = 'Error converting currency: ' + error.message;
             use_hardcoded();
-      
+        }
         
     }
 }
