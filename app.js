@@ -1,8 +1,10 @@
 
 
 const APIKEY = "154de4bb83aec54d16a03320"
-codesurl = "https://v6.exchangerate-api.com/v6/"+APIKEY+"/codes"
 
+//const APIKEY = "154de4bb83aec54d16a033"
+
+codesurl = "https://v6.exchangerate-api.com/v6/"+APIKEY+"/codes"
 
 
 
@@ -78,6 +80,7 @@ async function convertCurrency() {
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error('Failed to fetch the exchange rate');
+            
         }
         const data = await response.json();
         const rates = data.conversion_rates;
@@ -91,6 +94,8 @@ async function convertCurrency() {
     } catch (error) {
         console.error('Error:', error);
         resultDiv.textContent = 'Error converting currency';
+      
+        
     }
 }
 
@@ -100,4 +105,4 @@ function conversion(amount , rate){
 
 }
 
-module.exports = { conversion }
+module.exports = { conversion,convertCurrency }
