@@ -68,6 +68,7 @@ async function get_codes() {
 }
     catch (error) {
         console.error('Error:', error);
+        use_hardcoded()
     }
 }
 get_codes();
@@ -123,7 +124,14 @@ async function convertCurrency() {
 
     } catch (error) {
         console.error('Error:', error);
-        resultDiv.textContent = 'Error converting currency';
+        // Use hardcoded rates if available
+        if (hardcodedRates[fromCurrency] && hardcodedRates[fromCurrency][toCurrency]) {
+            const rate = hardcodedRates[fromCurrency][toCurrency];
+            const result = conversion(amount, rate);
+            resultDiv.textContent = `Converted using hardcoded rate: ${fromCurrency} to ${toCurrency} Amount: ${result}`;
+        } else {
+            resultDiv.textContent = 'Error converting currency: ' + error.message;
+            use_hardcoded();
       
         
     }
