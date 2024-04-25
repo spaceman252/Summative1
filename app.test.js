@@ -1,6 +1,6 @@
-
-const { describe } = require('yargs');
 const { conversion,convertCurrency } = require('./app.js');
+
+global.fetch = jest.fn(); 
 
 
 test('Two integers get multiplied and return a string 2 d.p', () => {
@@ -14,7 +14,8 @@ test('Two floats get multiplied and return a string 2 d.p', () => {
 
 
 
-global.fetch = jest.fn(); 
+
+
 beforeEach(() => {
  
   document.body.innerHTML = `
@@ -33,12 +34,12 @@ it('should display an error message for invalid input amounts', async () => {
   expect(resultDiv.textContent).toBe('Please enter a valid amount');
 });
 
-it('should handle fetch errors gracefully', async () => {
-  document.querySelector('.input_currency').value = '100';
+it('should switch to hard coded conversion on api fail', async () => {
+ document.querySelector('.input_currency').value = '100';
   fetch.mockImplementationOnce(() => Promise.reject('Network error')); 
   await convertCurrency();
   const resultDiv = document.getElementById('result');
-  expect(resultDiv.textContent).toBe('Error converting currency');
+  expect(resultDiv.textContent).toBe('Converted using hardcoded rate: USD to EUR Amount: 93.00');
 });
 
 it('should update the resultDiv correctly on successful conversion', async () => {
@@ -54,11 +55,10 @@ it('should update the resultDiv correctly on successful conversion', async () =>
   const resultDiv = document.getElementById('result');
   expect(resultDiv.textContent).toBe('Converted USD to Amount: 85.00');
 });
+
 it('Should fail when given a negative number' , async () => {
     document.querySelector('.input_currency').value = '-100'
     await convertCurrency();
     const resultDiv = document.getElementById('result');
     expect(resultDiv.textContent).toBe('Please enter a valid amount');
-}
-)
-
+});

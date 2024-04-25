@@ -2,10 +2,45 @@
 
 const APIKEY = "154de4bb83aec54d16a03320"
 
-//const APIKEY = "154de4bb83aec54d16a033"
+
 
 codesurl = "https://v6.exchangerate-api.com/v6/"+APIKEY+"/codes"
 
+
+const hardcodedRates = {
+    GBP: { EUR: 1.17, USD: 1.25 },
+    EUR: { GBP: 0.85, USD: 1.07 },
+    USD: { GBP: 0.80, EUR: 0.93 }
+};
+
+function use_hardcoded(){
+    const fromCurrencySelect = document.getElementById('fromCurrency');
+    const toCurrencySelect = document.getElementById('toCurrency');
+    
+    if (!fromCurrencySelect || !toCurrencySelect) {
+        console.error('Currency select elements not found!');
+        return; // Exit the function if elements are not found
+    }
+    // Clear existing options first if any
+    fromCurrencySelect.innerHTML = '';
+    toCurrencySelect.innerHTML = '';
+
+    // Iterate over hardcoded rates to populate the dropdowns
+    for (const [code, rates] of Object.entries(hardcodedRates)) {
+        // Create and append option for 'from' currency
+        const fromOption = document.createElement('option');
+        fromOption.value = code;
+        fromOption.text = code;
+        fromCurrencySelect.appendChild(fromOption);
+
+        // Create and append option for 'to' currency
+        const toOption = document.createElement('option');
+        toOption.value = code;
+        toOption.text = code;
+        toCurrencySelect.appendChild(toOption);
+    
+    }
+}
 
 
 async function get_codes() {
@@ -15,6 +50,7 @@ async function get_codes() {
         if(!response.ok){
 
             throw new Error('Failed to fetch data from API.')
+            
         }
     const data = await response.json();
     const codes = data.supported_codes;
@@ -38,8 +74,12 @@ async function get_codes() {
 }
     catch (error) {
         console.error('Error:', error);
+        use_hardcoded();
+
+        
     }
 }
+
 get_codes();
 
 function swapCurrency() {
@@ -93,8 +133,15 @@ async function convertCurrency() {
 
     } catch (error) {
         console.error('Error:', error);
-        resultDiv.textContent = 'Error converting currency';
-      
+        // Use hardcoded rates if available
+        if (hardcodedRates[fromCurrency] && hardcodedRates[fromCurrency][toCurrency]) {
+            const rate = hardcodedRates[fromCurrency][toCurrency];
+            const result = conversion(amount, rate);
+            resultDiv.textContent = `Converted using hardcoded rate: ${fromCurrency} to ${toCurrency} Amount: ${result}`;
+        } else {
+            resultDiv.textContent = 'Error converting currency: ' + error.message;
+            use_hardcoded();
+        }
         
     }
 }
