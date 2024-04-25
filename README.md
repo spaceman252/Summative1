@@ -22,7 +22,7 @@ By developing and integrating this application in my workplace, we can ensure we
 
 I designed my currency converter using Figma. I wanted the design to be minimalistic and simple to avoid overcrowding. After receiving feedback from a colleague, they liked the simple design but mentioned it could benefit from using a ‘To’ and ‘From’ label for the currency tabs. Although intuitively the conversion would occur from left to right this would clear up any confusion.
 
-![alt text](readme_images/design.png)
+![alt text](readme_images/DESIGN.png)
 
 #### Project planning
 
